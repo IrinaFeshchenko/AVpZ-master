@@ -15,5 +15,6 @@ namespace Mood.Models
         public string Name { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string Description { get; set; }
+        public int Id_user { get; set; }
     }
 }
