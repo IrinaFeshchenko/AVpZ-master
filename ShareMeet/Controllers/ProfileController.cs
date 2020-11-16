@@ -163,5 +163,26 @@ namespace ShareMeet.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Profile", "Profile");
         }
+        [HttpPost]
+        public async Task<IActionResult> Edit_new(MeetUp model)
+        {
+            MeetUp edit_meet = new MeetUp
+            {
+                Id_meetup = model.Id_meetup,
+                Name = model.Name,
+                Type = model.Type,
+                Description = model.Description,
+                companyId_company = model.companyId_company,
+                StartofSelection = model.StartofSelection,
+                FinishofSelection = model.FinishofSelection,
+                lng = model.lng,
+                lat = model.lat,
+                Adress = model.Adress,
+                Cost = model.Cost
+            };
+            db.MeetUps.Update(edit_meet);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Profile", "Profile");
+        }
     }
 }
