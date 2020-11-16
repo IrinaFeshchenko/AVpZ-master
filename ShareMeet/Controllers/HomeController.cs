@@ -31,7 +31,10 @@ namespace ShareMeet.Controllers
         {
             return View();
         }
-
+        public IActionResult vert()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
