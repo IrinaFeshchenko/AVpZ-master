@@ -105,5 +105,9 @@ namespace ShareMeet.Controllers
         {
             return _context.Companies.Any(e => e.Id_company == id);
         }
+        private bool CompanyAdd(int id)
+        {
+            return _context.Companies.Any(e => e.Id_company == id);
+        }
     }
 }
