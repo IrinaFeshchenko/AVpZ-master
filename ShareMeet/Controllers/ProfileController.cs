@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Mood.Models;
+using ShareMeet.Models;
 using ShareMeet.ViewModels;
 
 namespace ShareMeet.Controllers
@@ -59,7 +59,7 @@ namespace ShareMeet.Controllers
                                };
             ViewBag.data = Profile.ToList();
             ViewBag.company = companies.ToList();
-            ViewBag.measure = meetings.ToList();
+            ViewBag.meetings = meetings.ToList();
             return View();
         }
 
@@ -110,8 +110,9 @@ namespace ShareMeet.Controllers
 
 
         [HttpGet]
-        public IActionResult New_MeetUp()
+        public IActionResult New_MeetUp(int? id)
         {
+            ViewBag.companyId = id;
             return View();
         }
         [HttpPost]
@@ -160,6 +161,26 @@ namespace ShareMeet.Controllers
             MeetUp edit_meet = new MeetUp { Id_meetup=model.Id_meetup,Name = model.Name, Type = model.Type,Description=model.Description,companyId_company=model.companyId_company,
                 StartofSelection=model.StartofSelection,FinishofSelection=model.FinishofSelection,lng=model.lng,lat=model.lat,Adress=model.Adress,Cost=model.Cost };
             db.MeetUps.Update(edit_meet);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Profile", "Profile");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit_my_company(int? id)
+        {
+            Company comp = await db.Companies.FirstOrDefaultAsync(p => p.Id_company == id);
+            return View(comp);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit_my_company(Company model)
+        {
+            Company edit_comp = new Company
+            {
+                Id_company=model.Id_company,
+                Name=model.Name,
+                Description=model.Description,
+                Id_user=model.Id_user
+            };
+            db.Companies.Update(edit_comp);
             await db.SaveChangesAsync();
             return RedirectToAction("Profile", "Profile");
         }

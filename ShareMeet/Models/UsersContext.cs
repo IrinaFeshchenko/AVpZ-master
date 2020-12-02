@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Mood.Models
+namespace ShareMeet.Models
 {
     public class UsersContext:DbContext
     {

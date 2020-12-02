@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mood.Models
+namespace ShareMeet.Models
 {
     public class User
     {

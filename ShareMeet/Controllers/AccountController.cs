@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Mood.Models;
+using ShareMeet.Models;
 using Mood.ViewModels;
 
 namespace ShareMeet.Controllers

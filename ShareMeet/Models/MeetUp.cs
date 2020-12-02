@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mood.Models
+namespace ShareMeet.Models
 {
     public class MeetUp
     {

@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="midbackground">
+    @foreach (var item in ViewBag.data)
+    {
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="about">
+                    <h3 class="accent">About</h3>
+                    <h5>@item.Email</h5>
+                    <h5>@item.FirstName</h5>
+                    <h5>@item.Name</h5>
+                    <h5>@item.LastName</h5>
+                    <h5>@item.Gender</h5>
+                    <h5>@item.Birth</h5>
+                </div>
+            </div>
+        </div>
+    }
+    <li><a asp-area="" asp-controller="Profile" asp-action="New_Comp">Добавить компанию</a></li>
+    <h4>Компаниии</h4>
+    @if (ViewBag.company != null)
+    {
+        @foreach (var comp in ViewBag.company)
+        {
+            <li><a asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp.Id_company">Удалить компанию</a></li>
+            <li><a asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp.Id_company">Редактировать компанию</a></li>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="about">
+                        <h3 class="accent">About</h3>
+                        <h5>@comp.Id_company</h5>
+                        <h5>@comp.Name</h5>
+                        <h5>@comp.Description</h5>
+                    </div>
+                </div>
+            </div>
+            <h1>mEET UPS</h1>
+            <li><a asp-area="" asp-controller="Profile" asp-action="New_MeetUp" asp-route-id="@comp.Id_company">Добавить meting</a></li>
+            @foreach (var meetings in ViewBag.meetings)
+            {
+                if (meetings.companyId_company == comp.Id_company)
+                {
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="about">
+                                <h5>@meetings.Id_meetup</h5>
+                                <h5>@meetings.Name</h5>
+                                <h5>@meetings.Type</h5>
+                                <h5>@meetings.Description</h5>
+                                <h5>@meetings.companyId_company</h5>
+                                <h5>@meetings.StartofSelection</h5>
+                                <h5>@meetings.FinishofSelection</h5>
+                                <h5>@meetings.Adress</h5>
+                                <h5>@meetings.Cost</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <li><a asp-area="" asp-controller="Profile" asp-action="Delete" asp-route-id="@meetings.Id_meetup" asp-route-company_id="@comp.Id_company">Удалить meting</a></li>
+                    <li><a asp-area="" asp-controller="Profile" asp-action="Edit_my_meetup" asp-route-id="@meetings.Id_meetup">Редактировать meting</a></li>
+                    <h2>----------------------------------------------------------------</h2>
+                }
+            }
+        }
+    }
+</div>

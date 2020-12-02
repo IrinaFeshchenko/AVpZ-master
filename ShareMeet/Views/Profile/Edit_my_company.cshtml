@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ShareMeet.Models.Company
+
+
+<form asp-action="Edit_my_company" asp-controller="Profile" asp-route-id="@Model.Id_company" enctype="multipart/form-data" method="post" class="ui-form">
+    <h3>Редагувати моє оголошення</h3>
+    <div class="form-group" style="visibility:hidden; clip: rect(0, 0, 0, 0);
+  position: absolute;">
+        <label asp-for="Id_company" class="control-label">Id</label>
+        <input type="number" asp-for="Id_company" class="form-control" />
+    </div>
+    <div class="form-group" style="visibility:hidden ;clip: rect(0, 0, 0, 0);
+  position: absolute;">
+        <label asp-for="Id_user" class="control-label">Id_user</label>
+        <input type="number" asp-for="Id_user" class="form-control" />
+    </div>
+    <div class="form-row">
+        <input type="text" asp-for="Name" class="form-control" /><label asp-for="Name" class="control-label">Название</label>
+    </div>
+    <div class="form-row">
+        <input type="text" asp-for="Description" class="form-control" /><label asp-for="Description" class="control-label">Описание</label>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Зберегти" class="btn btn-default" />
+    </div>
+</form>

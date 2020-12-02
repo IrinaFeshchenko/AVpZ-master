@@ -14,23 +14,28 @@
         @if (!User.Identity.IsAuthenticated)
         {
             <ul class="menu-main1">
-                <li><a href="" class="current"><img src="img/Group 4.png"></a></li>
+                <li><a href="" class="current"><img src="~/img/Group 4.png"></a></li>
                 <li><a href="">Поиск</a></li>
                 <li><a href="">Найти событие</a></li>
                 <li><a href="">Разместить событие</a></li>
-                <li><a  asp-area="" asp-controller="Home" asp-action="Register">Регистрация</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Login">Вход</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Main">О компании</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Login">Вход</a></li>
             </ul>
         }
         else
         {
-            <li><a href="" class="current"><img src="img/Group 4.png"></a></li>
-            <li><a href="">Поиск</a></li>
-            <li><a href="">Найти событие</a></li>
-            <li><a href="">Разместить событие</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Logout">Выход</a></li>
+            <ul class="menu-main1">
+                <li><a href="" class="current"><img src="~/img/Group 4.png"></a></li>
+                <li><a href="">Поиск</a></li>
+                <li><a href="">Найти событие</a></li>
+                <li><a href="">Разместить событие</a></li>
+                <li><a asp-area="" asp-controller="Profile" asp-action="Profile">Профиль</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Main">О компании</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Logout">Выход</a></li>
+                </ul>
         }
-    </div>
+        </div>
    
             @RenderBody()
     
@@ -45,7 +50,7 @@
             <table class="end">
                 <tr>
                     <td>
-                        <img src="img/Group 4.png" class="end">
+                        <img src="~/img/Group 4.png" class="end">
                     </td>
                     <td>
                         <div> О проекте </div><br class="end">
