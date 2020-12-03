@@ -3,6 +3,49 @@
 *@
 @{
 }
+
+<style>
+
+    #main {
+        /*background-color: #f2f2f2;*/
+        padding: 20px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px;
+        border-bottom: 4px solid #ddd;
+    }
+
+    #real-estates-detail #author img {
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -ms-border-radius: 100%;
+        -o-border-radius: 100%;
+        border-radius: 100%;
+        border: 5px solid /*#ecf0f1*/;
+        margin-bottom: 10px;
+    }
+
+    #real-estates-detail .sosmed-author i.fa {
+        width: 30px;
+        height: 30px;
+        border: 2px solid /*#bdc3c7*/;
+        color: #bdc3c7;
+        padding-top: 6px;
+        margin-top: 10px;
+    }
+
+    .panel-default .panel-heading {
+        /*background-color: #fff;*/
+    }
+
+    #real-estates-detail .slides li img {
+        height: 450px;
+    }
+</style>
+
+
 <div class="midbackground">
     @foreach (var item in ViewBag.data)
     {
@@ -22,22 +65,23 @@
     }
     <li><a asp-area="" asp-controller="Profile" asp-action="New_Comp">Добавить компанию</a></li>
     <h4>Компаниии</h4>
-    @if (ViewBag.company != null)
+
+@if (ViewBag.company != null)
+{
+    @foreach (var comp in ViewBag.company)
     {
-        @foreach (var comp in ViewBag.company)
-        {
-            <li><a asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp.Id_company">Удалить компанию</a></li>
-            <li><a asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp.Id_company">Редактировать компанию</a></li>
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="about">
-                        <h3 class="accent">About</h3>
-                        <h5>@comp.Id_company</h5>
-                        <h5>@comp.Name</h5>
-                        <h5>@comp.Description</h5>
-                    </div>
+        <li><a asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp.Id_company">Удалить компанию</a></li>
+        <li><a asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp.Id_company">Редактировать компанию</a></li>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="about">
+                    <h3 class="accent">About</h3>
+                    <h5>@comp.Id_company</h5>
+                    <h5>@comp.Name</h5>
+                    <h5>@comp.Description</h5>
                 </div>
             </div>
+        </div>
             <h1>mEET UPS</h1>
             <li><a asp-area="" asp-controller="Profile" asp-action="New_MeetUp" asp-route-id="@comp.Id_company">Добавить meting</a></li>
             @foreach (var meetings in ViewBag.meetings)
@@ -65,5 +109,7 @@
                 }
             }
         }
-    }
+        }
+        
+        </div>
 </div>
