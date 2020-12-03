@@ -5,83 +5,230 @@
 }
 
 <style>
-
-    #main {
-        /*background-color: #f2f2f2;*/
-        padding: 20px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -ms-border-radius: 4px;
-        -o-border-radius: 4px;
-        border-radius: 4px;
-        border-bottom: 4px solid #ddd;
+    #team {
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 3;
     }
 
-    #real-estates-detail #author img {
-        -webkit-border-radius: 100%;
-        -moz-border-radius: 100%;
-        -ms-border-radius: 100%;
-        -o-border-radius: 100%;
-        border-radius: 100%;
-        border: 5px solid /*#ecf0f1*/;
+    .card {
+        width: 33%;
+        min-width: 250px;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+        margin: 0 0.5% 1% 0;
+        display: inline-block;
+    }
+
+        .card:nth-of-type(3n) {
+            margin-right: 0;
+        }
+
+        .card img {
+            width: 100%;
+            min-height: 100%;
+            transition: all 0.9s
+        }
+
+        .card:hover img {
+            transform: scale(1.2,1.2)
+        }
+
+    .data {
+        position: absolute;
+        bottom: 5%;
+        background: #fff;
+        text-align: center;
+        width: 90%;
+        height: 80px;
+        overflow: hidden;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding: 10px 5%;
+        box-sizing: border-box;
+        opacity: 0.8;
+        transition: all 0.4s
+    }
+
+    .card:hover .data {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        opacity: 0.9;
+        padding: 90px 10%
+    }
+
+    .data h2 {
+        margin: 0 0 5px 0;
+        transition: color 0.4s
+    }
+
+    .data p {
+        opacity: 0;
+        text-align: justify;
+        transition: all 0.2s
+    }
+
+    .card:hover .data p, .card:hover .data a {
+        opacity: 1
+    }
+
+    .data a {
+        color: #333;
+        text-decoration: none;
+        padding: 20px;
+        opacity: 0
+    }
+
+        .data a:hover, .card:hover h2 {
+            color: #38c
+        }
+
+
+    .btn-twtr {
+        color: #ddd;
+        border: 2px solid;
+        border-radius: 3px;
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 10px;
+        font-family: sans-serif;
+        font-weight: 600;
+        margin-top: 100px;
+        opacity: 0.8
+    }
+
+
+
+
+
+
+
+    .profile {
+        min-height: 355px;
+        display: inline-block;
+    }
+
+    figcaption.ratings {
+        margin-top: 20px;
+    }
+
+        figcaption.ratings a {
+            color: #f1c40f;
+            font-size: 11px;
+        }
+
+            figcaption.ratings a:hover {
+                color: #f39c12;
+                text-decoration: none;
+            }
+
+    .divider {
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .emphasis {
+        border-top: 4px solid transparent;
+    }
+
+        .emphasis:hover {
+            border-top: 4px solid #1abc9c;
+        }
+
+        .emphasis h2 {
+            margin-bottom: 0;
+        }
+
+    span.tags {
+        background: #1abc9c;
+        border-radius: 2px;
+        color: #f5f5f5;
+        font-weight: bold;
+        padding: 2px 4px;
+    }
+
+    .dropdown-menu {
+        background-color: #34495e;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        width: 250px;
+        margin-left: -125px;
+        left: 50%;
+    }
+
+        .dropdown-menu .divider {
+            background: none;
+        }
+
+        .dropdown-menu > li > a {
+            color: #f5f5f5;
+        }
+
+    .dropup .dropdown-menu {
         margin-bottom: 10px;
     }
 
-    #real-estates-detail .sosmed-author i.fa {
-        width: 30px;
-        height: 30px;
-        border: 2px solid /*#bdc3c7*/;
-        color: #bdc3c7;
-        padding-top: 6px;
-        margin-top: 10px;
-    }
+        .dropup .dropdown-menu:before {
+            content: "";
+            border-top: 10px solid #34495e;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -10px;
+            z-index: 10;
+        }
 
-    .panel-default .panel-heading {
-        /*background-color: #fff;*/
-    }
 
-    #real-estates-detail .slides li img {
-        height: 450px;
-    }
+
 </style>
+
+
+
+
+
 
 
 <div class="midbackground">
     @foreach (var item in ViewBag.data)
     {
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="about">
-                    <h3 class="accent">About</h3>
-                    <h5>@item.Email</h5>
-                    <h5>@item.FirstName</h5>
-                    <h5>@item.Name</h5>
-                    <h5>@item.LastName</h5>
-                    <h5>@item.Gender</h5>
-                    <h5>@item.Birth</h5>
-                </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="about">
+                <h3 class="accent">About</h3>
+                <h5>@item.Email</h5>
+                <h5>@item.FirstName</h5>
+                <h5>@item.Name</h5>
+                <h5>@item.LastName</h5>
+                <h5>@item.Gender</h5>
+                <h5>@item.Birth</h5>
             </div>
         </div>
-    }
+    </div>
+}
     <li><a asp-area="" asp-controller="Profile" asp-action="New_Comp">Добавить компанию</a></li>
     <h4>Компаниии</h4>
 
-@if (ViewBag.company != null)
-{
-    @foreach (var comp in ViewBag.company)
+    @if (ViewBag.company != null)
     {
-        <li><a asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp.Id_company">Удалить компанию</a></li>
-        <li><a asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp.Id_company">Редактировать компанию</a></li>
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="about">
-                    <h3 class="accent">About</h3>
-                    <h5>@comp.Id_company</h5>
-                    <h5>@comp.Name</h5>
-                    <h5>@comp.Description</h5>
+        @foreach (var comp in ViewBag.company)
+        {
+            <li><a asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp.Id_company">Удалить компанию</a></li>
+            <li><a asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp.Id_company">Редактировать компанию</a></li>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="about">
+                        <h3 class="accent">About</h3>
+                        <h5>@comp.Id_company</h5>
+                        <h5>@comp.Name</h5>
+                        <h5>@comp.Description</h5>
+                    </div>
                 </div>
             </div>
-        </div>
             <h1>mEET UPS</h1>
             <li><a asp-area="" asp-controller="Profile" asp-action="New_MeetUp" asp-route-id="@comp.Id_company">Добавить meting</a></li>
             @foreach (var meetings in ViewBag.meetings)
@@ -103,13 +250,26 @@
                             </div>
                         </div>
                     </div>
+
+
+
+                    <section id="team">
+                        <div class="card" style="background-image:linear-gradient(45deg, #48a219 0%, #1421ff 100%);">
+                            @*<img src="http://www.lift-financial.com/perch/resources/team/marktueart-1-w800.jpg" alt="" />*@
+                            <div class="data">
+                                <h2>@meetings.Id_meetup</h2>
+                                <i>@meetings.Name</i>
+                                <p>@meetings.Type</p>
+                            </div>
+                        </div>
+                    </section>
                     <li><a asp-area="" asp-controller="Profile" asp-action="Delete" asp-route-id="@meetings.Id_meetup" asp-route-company_id="@comp.Id_company">Удалить meting</a></li>
                     <li><a asp-area="" asp-controller="Profile" asp-action="Edit_my_meetup" asp-route-id="@meetings.Id_meetup">Редактировать meting</a></li>
                     <h2>----------------------------------------------------------------</h2>
                 }
             }
         }
-        }
-        
-        </div>
-</div>
+    }
+
+    </div>
+    </div>
