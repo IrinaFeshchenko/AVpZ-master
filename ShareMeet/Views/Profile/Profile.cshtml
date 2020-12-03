@@ -100,90 +100,6 @@
         opacity: 0.8
     }
 
-
-
-
-
-
-
-    .profile {
-        min-height: 355px;
-        display: inline-block;
-    }
-
-    figcaption.ratings {
-        margin-top: 20px;
-    }
-
-        figcaption.ratings a {
-            color: #f1c40f;
-            font-size: 11px;
-        }
-
-            figcaption.ratings a:hover {
-                color: #f39c12;
-                text-decoration: none;
-            }
-
-    .divider {
-        border-top: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .emphasis {
-        border-top: 4px solid transparent;
-    }
-
-        .emphasis:hover {
-            border-top: 4px solid #1abc9c;
-        }
-
-        .emphasis h2 {
-            margin-bottom: 0;
-        }
-
-    span.tags {
-        background: #1abc9c;
-        border-radius: 2px;
-        color: #f5f5f5;
-        font-weight: bold;
-        padding: 2px 4px;
-    }
-
-    .dropdown-menu {
-        background-color: #34495e;
-        box-shadow: none;
-        -webkit-box-shadow: none;
-        width: 250px;
-        margin-left: -125px;
-        left: 50%;
-    }
-
-        .dropdown-menu .divider {
-            background: none;
-        }
-
-        .dropdown-menu > li > a {
-            color: #f5f5f5;
-        }
-
-    .dropup .dropdown-menu {
-        margin-bottom: 10px;
-    }
-
-        .dropup .dropdown-menu:before {
-            content: "";
-            border-top: 10px solid #34495e;
-            border-right: 10px solid transparent;
-            border-left: 10px solid transparent;
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            margin-left: -10px;
-            z-index: 10;
-        }
-
-
-
 </style>
 
 
@@ -191,25 +107,154 @@
 
 
 
-
-<div class="midbackground">
-    @foreach (var item in ViewBag.data)
-    {
-
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="about">
-                <h3 class="accent">About</h3>
-                <h5>@item.Email</h5>
-                <h5>@item.FirstName</h5>
-                <h5>@item.Name</h5>
-                <h5>@item.LastName</h5>
-                <h5>@item.Gender</h5>
-                <h5>@item.Birth</h5>
+@foreach (var item1 in ViewBag.data)
+{
+    <div class="midbackground">
+        <div class="container">
+            <div class="main-body">
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card mt-3" style="width:350px">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
+                                    <span class="text-secondary">https://bootdey.com</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
+                                    <span class="text-secondary">bootdey</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
+                                    <span class="text-secondary"></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
+                                    <span class="text-secondary">bootdey</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
+                                    <span class="text-secondary">bootdey</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8" >
+                        <div class="card mb-3" style="width:780px">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Full Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @item1.FirstName @item1.Name @item1.LastName
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @item1.Email
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Gender</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @item1.Gender
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Birth</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @item1.Birth
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Address</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Bay Area, San Francisco, CA
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters-sm">
+                            @foreach (var comp1 in ViewBag.company)
+                            {
+                                <div class="col-sm-6 mb-3">
+                                    <div class="card h-100" style="width:400px">
+                                        <div class="card-body">
+                                            <a asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp1.Id_company">Удалить компанию</a>
+                                            <a asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp1.Id_company">Редактировать компанию</a>
+                                            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                                            <h5>@comp1.Id_company</h5>
+                                            <h5>@comp1.Name</h5>
+                                            <h5>@comp1.Description</h5>
+                                        </div>
+                                        <div>
+                                            <a asp-area="" asp-controller="Profile" asp-action="New_MeetUp" asp-route-id="@comp1.Id_company">Добавить meting</a>
+                                            @foreach (var meetings1 in ViewBag.meetings)
+                                            {
+                                                if (meetings1.companyId_company == comp1.Id_company)
+                                                {
+                                                    <section id="team">
+                                                        <div class="card" style="background-image:linear-gradient(45deg, #48a219 0%, #1421ff 100%);height:400px;width:379px">
+                                                            <div class="data">
+                                                                <h2>@meetings1.Id_meetup</h2>
+                                                                <i>@meetings1.Name</i>
+                                                                <p>@meetings1.Type</p>
+                                                                <p>@meetings1.companyId_company</p>
+                                                                <p>@meetings1.StartofSelection</p>
+                                                                <p>@meetings1.FinishofSelection</p>
+                                                                <p>@meetings1.Adress</p>
+                                                                <p>@meetings1.Cost</p>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <a asp-area="" asp-controller="Profile" asp-action="Delete" asp-route-id="@meetings1.Id_meetup" asp-route-company_id="@comp1.Id_company">Удалить meting</a>
+                                                    <a asp-area="" asp-controller="Profile" asp-action="Edit_my_meetup" asp-route-id="@meetings1.Id_meetup">Редактировать meting</a>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 }
+
+@*<div class="midbackground">
+    @foreach (var item in ViewBag.data)
+    {
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="about">
+                    <h3 class="accent">About</h3>
+                    <h5>@item.Email</h5>
+                    <h5>@item.FirstName</h5>
+                    <h5>@item.Name</h5>
+                    <h5>@item.LastName</h5>
+                    <h5>@item.Gender</h5>
+                    <h5>@item.Birth</h5>
+                </div>
+            </div>
+        </div>
+    }
     <li><a asp-area="" asp-controller="Profile" asp-action="New_Comp">Добавить компанию</a></li>
     <h4>Компаниии</h4>
 
@@ -255,7 +300,6 @@
 
                     <section id="team">
                         <div class="card" style="background-image:linear-gradient(45deg, #48a219 0%, #1421ff 100%);">
-                            @*<img src="http://www.lift-financial.com/perch/resources/team/marktueart-1-w800.jpg" alt="" />*@
                             <div class="data">
                                 <h2>@meetings.Id_meetup</h2>
                                 <i>@meetings.Name</i>
@@ -271,5 +315,5 @@
         }
     }
 
-    </div>
-    </div>
+</div>
+</div>*@
