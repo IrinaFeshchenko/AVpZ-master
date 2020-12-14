@@ -65,5 +65,49 @@ namespace ShareMeet.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public JsonResult GetData()
+        {
+            var meetings = from meet in db.MeetUps
+                           select new MeetUp
+                           {
+                               Id_meetup = meet.Id_meetup,
+                               Name = meet.Name,
+                               Type = meet.Type,
+                               Description = meet.Description,
+                               companyId_company = meet.companyId_company,
+                               StartofSelection = meet.StartofSelection,
+                               FinishofSelection = meet.FinishofSelection,
+                               lng = meet.lng,
+                               lat = meet.lat,
+                               Adress = meet.Adress,
+                               Cost = meet.Cost
+
+                           };
+
+            return Json(meetings);
+        }
+        public IActionResult InfoMeeting(int id)
+        {
+            var meetings = from meet in db.MeetUps
+                           where meet.Id_meetup==id
+                           select new MeetUp
+                           {
+                               Id_meetup = meet.Id_meetup,
+                               Name = meet.Name,
+                               Type = meet.Type,
+                               Description = meet.Description,
+                               companyId_company = meet.companyId_company,
+                               StartofSelection = meet.StartofSelection,
+                               FinishofSelection = meet.FinishofSelection,
+                               lng = meet.lng,
+                               lat = meet.lat,
+                               Adress = meet.Adress,
+                               Cost = meet.Cost
+
+                           };
+            ViewBag.meet = meetings.ToList();
+            return View();
+        }
     }
 }

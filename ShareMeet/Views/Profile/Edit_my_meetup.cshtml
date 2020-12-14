@@ -4,49 +4,272 @@
 @{
 }
 @model ShareMeet.Models.MeetUp
-<form asp-action="Edit_my_meetup" asp-controller="Profile" asp-route-id="@Model.Id_meetup" enctype="multipart/form-data" method="post" class="ui-form">
-    <h3>Редагувати моє оголошення</h3>
-    <div class="form-group" style="visibility:hidden; clip: rect(0, 0, 0, 0);
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .decor {
+        position: relative;
+        max-width: 400px;
+        margin: 50px auto 0;
+        background: white;
+        border-radius: 30px;
+    }
+
+    .form-left-decoration,
+    .form-right-decoration {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 20px;
+        background: #9E1635;
+        border-radius: 20px;
+    }
+
+    .form-left-decoration {
+        bottom: 60px;
+        left: -30px;
+    }
+
+    .form-right-decoration {
+        top: 60px;
+        right: -30px;
+    }
+
+        .form-left-decoration:before,
+        .form-left-decoration:after,
+        .form-right-decoration:before,
+        .form-right-decoration:after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            border-radius: 30px;
+            background: white;
+        }
+
+    .form-left-decoration:before {
+        top: -20px;
+    }
+
+    .form-left-decoration:after {
+        top: 20px;
+        left: 10px;
+    }
+
+    .form-right-decoration:before {
+        top: -20px;
+        right: 0;
+    }
+
+    .form-right-decoration:after {
+        top: 20px;
+        right: 10px;
+    }
+
+    .circle {
+        position: absolute;
+        bottom: 80px;
+        left: -55px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .form-inner {
+        padding: 50px;
+    }
+
+        .form-inner input,
+        .form-inner textarea {
+            display: block;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 10px;
+            background: #E9EFF6;
+            line-height: 40px;
+            border-width: 0;
+            border-radius: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+            .form-inner input[type="submit"] {
+                margin-top: 30px;
+                background: #bf6b80;
+                border-bottom: 4px solid #9E1635;
+                color: white;
+                font-size: 14px;
+            }
+
+        .form-inner textarea {
+            resize: none;
+        }
+
+        .form-inner h3 {
+            margin-top: 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            color: #9E1635;
+        }
+
+    .div_space {
+        margin-bottom: 10px;
+    }
+</style>
+
+<form class="decor" asp-action="Edit_my_meetup" asp-controller="Profile" asp-route-id="@Model.Id_meetup" enctype="multipart/form-data" method="post" class="ui-form">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <h3>Редагувати моє оголошення</h3>
+        <div class="form-group" style="visibility:hidden; clip: rect(0, 0, 0, 0);
   position: absolute;">
-        <label asp-for="Id_meetup" class="control-label">Id</label>
-        <input type="number" asp-for="Id_meetup" class="form-control" />
-    </div>
-    <div class="form-group" style="visibility:hidden ;clip: rect(0, 0, 0, 0);
+            <label asp-for="Id_meetup" class="control-label">Id</label>
+            <input type="number" asp-for="Id_meetup" class="form-control" />
+        </div>
+        <div class="form-group" style="visibility:hidden ;clip: rect(0, 0, 0, 0);
   position: absolute;">
-        <label asp-for="companyId_company" class="control-label">Id_user</label>
-        <input type="number" asp-for="companyId_company" class="form-control" />
-    </div>
-    <div class="form-row">
-        <input type="text" asp-for="Name" class="form-control" /><label asp-for="Name" class="control-label">Название</label>
-    </div>
-    <div class="form-row">
-        <input type="text" asp-for="Description" class="form-control" /><label asp-for="Description" class="control-label">Описание</label>
-    </div>
-    <div class="form-row">
-        <input type="text" asp-for="Type" class="form-control" /><label asp-for="Type" class="control-label">Процент изучениея</label>
-    </div>
-    <div class="form-row">
-        <input type="datetime" asp-for="StartofSelection" class="form-control" /><label asp-for="StartofSelection" class="control-label">Процент изучениея</label>
-    </div>
-    <div class="form-row">
-        <input type="datetime" asp-for="FinishofSelection" class="form-control" /><label asp-for="FinishofSelection" class="control-label">Процент изучениея</label>
-    </div>
-    <div class="form-group">
-        <label asp-for="lng" class="control-label">Id_user</label>
-        <input type="text" asp-for="lng" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="lat" class="control-label">Id_user</label>
-        <input type="text" asp-for="lat" class="form-control" />
-    </div>
-    <div class="form-row">
-        <input type="text" asp-for="Adress" class="form-control" /><label asp-for="Adress" class="control-label">Описание</label>
-    </div>
-    <div class="form-row">
-        <input type="text" asp-for="Cost" class="form-control" /><label asp-for="Cost" class="control-label">Описание</label>
-    </div>
-    </tr>
-    <div class="form-group">
-        <input type="submit" value="Зберегти" class="btn btn-default" />
+            <label asp-for="companyId_company" class="control-label">Id_user</label>
+            <input type="number" asp-for="companyId_company" class="form-control" />
+        </div>
+        <div class="form-row">
+            <input type="text" asp-for="Name" class="form-control" /><label asp-for="Name" class="control-label">Название</label>
+        </div>
+        <div class="form-row">
+            <input type="text" asp-for="Description" class="form-control" /><label asp-for="Description" class="control-label">Описание</label>
+        </div>
+        <div class="form-row">
+            <input type="text" asp-for="Type" class="form-control" /><label asp-for="Type" class="control-label">Процент изучениея</label>
+        </div>
+        <div class="form-row">
+            <input type="datetime" asp-for="StartofSelection" class="form-control" /><label asp-for="StartofSelection" class="control-label">Процент изучениея</label>
+        </div>
+        <div class="form-row">
+            <input type="datetime" asp-for="FinishofSelection" class="form-control" /><label asp-for="FinishofSelection" class="control-label">Процент изучениея</label>
+        </div>
+
+
+        <div id="canvas" style="height: 900px; width:900px;margin:auto"></div>
+        <div id="controls">
+            <input type="button" value="Remove all Markers" onClick="removeMarkers()" />
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="lng" class="control-label">Id_user</label>
+            <input type="text" asp-for="lng" id='lat' class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="lat" class="control-label">Id_user</label>
+            <input type="text" asp-for="lat" id='lat' class="form-control" />
+        </div>
+        <div class="form-row">
+            <input type="text" asp-for="Adress" class="form-control" /><label asp-for="Adress" class="control-label">Описание</label>
+        </div>
+        <div class="form-row">
+            <input type="text" asp-for="Cost" class="form-control" /><label asp-for="Cost" class="control-label">Описание</label>
+        </div>
+        </tr>
+        <div class="form-group">
+            <input type="submit" value="Зберегти" class="btn btn-default" />
+        </div>
     </div>
 </form>
+
+@section scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&callback=initialize"></script>
+    <script>
+        let map;
+        let markersArray = [];
+        let polyline = null;
+        let lat;
+        let lng;
+        $(document).ready(function () {
+            initMap();
+        });
+        var content = '@ViewBag.lat';
+        var content2 = '@ViewBag.lng';
+        alert(content.replace(",", "."));
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('canvas'), {
+                center: { lat: 55.752622, lng: 37.617567 },
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+            });
+            var marker = new google.maps.Marker({
+                'position': new google.maps.LatLng(content2.replace(",", "."), content.replace(",", ".")),
+                'map': map,
+                'title': "фьу"
+            });
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+            // map onclick listener
+            map.addListener('click', function (e) {
+                addMarker(e.latLng);
+                lat = e.latLng.lat();
+                lng = e.latLng.lng();
+                alert(e.latLng);
+                document.getElementById("lat").value = lat;
+                document.getElementById("lng").value = lng;
+                lat = document.getElementById('lat').value.replace(".", ","),
+                    lng = document.getElementById('lng').value.replace(".", ",");
+                document.getElementById("lat").value = lat;
+                document.getElementById("lng").value = lng;
+                //drawPolyline();
+            });
+        }
+        // define function to add marker at given lat & lng
+        function addMarker(latLng) {
+            let marker = new google.maps.Marker({
+                map: map,
+                position: latLng,
+                draggable: true
+            });
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+
+            // add listener to redraw the polyline when markers position change
+            marker.addListener('position_changed', function (e) {
+                //drawPolyline();
+            });
+
+            //store the marker object drawn in global array
+            markersArray.push(marker);
+        }
+        function removeMarkers() {
+            for (i = 0; i < markersArray.length; i++) {
+                markersArray[i].setMap(null);
+            }
+        }
+
+        // define function to draw polyline that connect markers' position
+        function drawPolyline() {
+            let markersPositionArray = [];
+            // obtain latlng of all markers on map
+            markersArray.forEach(function (e) {
+                markersPositionArray.push(e.getPosition());
+            });
+
+            // check if there is already polyline drawn on map
+            // remove the polyline from map before we draw new one
+            if (polyline !== null) {
+                polyline.setMap(null);
+            }
+
+            // draw new polyline at markers' position
+            polyline = new google.maps.Polyline({
+                map: map,
+                path: markersPositionArray,
+                strokeOpacity: 0.4
+            });
+        }
+    </script>
+    <script>
+    document.getElementById("result").value = @ViewBag.companyId;
+    </script>
+}

@@ -1,7 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
 }
-
 <style type="text/css">
     .fix {
         width: 100%;
@@ -592,167 +593,29 @@
         width: 250px;
     }
 </style>
-
-<div class="fix">
-    <div class="menu2">
-        <ul class="menu-main2">
-            <li><a href="" class="current">Концерты</a></li>
-            <li><a href=""></a>Спектакли</li>
-            <li><a href="">Выставки</a></li>
-            <li><a href="">Собрания</a></li>
-            <li><a href="">Праздник</a></li>
-            <li><a href="">Еще</a></li>
-        </ul>
-    </div>
-    <div class="menu3">
-        <ul class="menu-main3">
-            <li><a href="" class="current">Достопримечательности</a></li>
-            <li><a href=""></a>Театры</li>
-            <li><a href="">Клубы</a></li>
-            <li><a href="">Музеи</a></li>
-            <li><a href="">Кинотеатры</a></li>
-            <li><a href="">Еще</a></li>
-        </ul>
-    </div>
-</div>
-
-    </div>
-<div class="midbackground">
-    <div class="midle1">
-        Афиша событий Харькова на 2020 год
-    </div>
-    <div class="midle2">
-        <a href="">Анонсы</a>
-        <a href="">Расписание</a>
-    </div>
-
-
-    <div class="Filtr1">
-        <div class="Filtr1text">
-            <a href="">Все события</a>
-            <a href="">На этой недели</a>
-            <a href="">На этиъ выходных</a>
-            <a href="">Бесплатные</a>
-        </div>
-        <div class="Filtr1right">
-            @ViewBag.count событий
+<div class="MeetUps">
+@if (ViewBag.meet != null)
+{
+@foreach (var meet in ViewBag.meet)
+{
+<section id="team">
+    <div class="card" style="background-image:linear-gradient(45deg, #48a219 0%, #1421ff 100%);height:400px;width:379px">
+        <div class="data">
+            <h2>@meet.Id_meetup</h2>
+            <i>@meet.Name</i>
+            <p>@meet.Type</p>
+            <p>@meet.companyId_company</p>
+            <p>@meet.StartofSelection</p>
+            <p>@meet.FinishofSelection</p>
+            <p>@meet.Adress</p>
+            <p>@meet.Cost</p>
         </div>
     </div>
-    <div class="Filtr2">
-        <div class="Filtr2text">
-            <a href="">Выбрать дату</a>
-            <a href="">Теги</a>
-
-        </div>
-
-        <div class="Filtr2right">
-            <a href="">На карте</a>
-            <a href="">Список</a>
-        </div>
-    </div>
-    <div id="canvas" style="height: 900px; width:900px;margin:auto"></div>
-    <div class="MeetUps">
-        <section>
-            <section class="team-page-section">
-                <div class="container">
-
-                    <div class="row clearfix">
-                        @foreach (var item in ViewBag.data)
-                        {
-                            <div class="team-block col-lg-4 col-md-6 col-sm-12">
-                                <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                    <div class="image">
-                                        <a href="#"><img src="https://s.dou.ua/CACHE/images/img/announces/net-07/8cd71a686399580669f96d7cfabb5e59.png" alt="" /></a>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="#">@item.Name</a></h3>
-                                        <div class="designation">@item.Type</div>
-                                        <div class="designation">@item.Description</div>
-                                        <div class="designation">@item.StartofSelection</div>
-                                        <div class="designation">@item.FinishofSelection</div>
-                                        <div class="designation">@item.Adress</div>
-                                        <div class="designation">@item.Cost</div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </section>
-        </section>
-    </div>
-    <div class="mid">
-
-    </div>
-</div>
-
-
-@section scripts {
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
-    <script type="text/javascript">
-
-
-    $(document).ready(function () {
-        GetMap();
-    });
-
-    // Функция загрузки
-    function GetMap() {
-
-        google.maps.visualRefresh = true;
-        // установка основных координат
-        var Moscow = new google.maps.LatLng(55.752622, 37.617567);
-
-        // Установка общих параметров отображения карты, как масштаб, центральная точка и тип карты
-        var mapOptions = {
-            zoom: 15,
-            center: Moscow,
-            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-        };
-
-        // Встраиваем гугл-карты в элемент на странице и получаем объект карты
-        var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
-
-        // Настраиваем красный маркер, который будет использоваться для центральной точки
-        var myLatlng = new google.maps.LatLng(55.752622, 37.617567);
-
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Станции метро'
-        });
-
-        // Берем для маркера иконку с сайта google
-        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
-
-        // Получаем данные
-        $.getJSON('@Url.Action("GetData","Home")', function (data) {
-            // Проходим по всем данным и устанавливаем для них маркеры
-            $.each(data, function (i, item) {
-                var marker = new google.maps.Marker({
-                    'position': new google.maps.LatLng(item.lng, item.lat),
-                    'map': map,
-                    'title': item.Description
-                });
-
-                // Берем для этих маркеров синие иконки с сайта google
-                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-
-
-
-                // Для каждого объекта добавляем доп. информацию, выводимую в отдельном окне
-                var infowindow = new google.maps.InfoWindow({
-                    content: "<div class='stationInfo'><h2>Станция " + item.id_meetup + "</h2><div><h4>Линия метро: "
-                        + item.id_meetup + "</h4></div><div><h4>Пассажиропоток: " + item.description + " млн. человек</h4></div></div>"
-
-                });
-                // обработчик нажатия на маркер объекта
-                google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.open(map, marker);
-                });
-            })
-        });
-    }
-    </script>
+</section>
 }
+}
+else
+{
+    <h1>ERROR</h1>
+}
+</div>

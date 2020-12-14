@@ -153,6 +153,8 @@ namespace ShareMeet.Controllers
         public async Task<IActionResult> Edit_my_meetup(int? id)
         {
             MeetUp meet = await db.MeetUps.FirstOrDefaultAsync(p => p.Id_meetup == id);
+            ViewBag.lat = meet.lat;
+            ViewBag.lng = meet.lng;
             return View(meet);
         }
         [HttpPost]

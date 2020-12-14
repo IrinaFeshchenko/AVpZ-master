@@ -101,6 +101,7 @@ namespace ShareMeet.Controllers
             return meetUp;
         }
 
+
         private bool MeetUpExists(int id)
         {
             return _context.MeetUps.Any(e => e.Id_meetup == id);
