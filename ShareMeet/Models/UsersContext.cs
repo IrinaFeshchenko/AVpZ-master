@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ShareMeet.Models
 {
     public class UsersContext:DbContext
@@ -16,6 +15,7 @@ namespace ShareMeet.Models
         public UsersContext(DbContextOptions<UsersContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
     }

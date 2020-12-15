@@ -46,24 +46,23 @@
         Питер – город, который не стоит на месте. Здесь всегда происходит движение. Днем на улицах воздух пропитан работой - все заведения открыты, офисы полны работников, в университетах и школах вовсю раздают знания. Но стоит только солнцу спрятаться за горизонт, настроение в городе резко меняется на отдых и развлечения. Выйдя с работы или универа, каждый хочет увидеться с близкими в уютной обстановке. Для каждого она своя – одни любят домашние теплые вечера, а для кого-то обязательно нужно сходить в шумные бары и отведать свою порцию танцев,  и не только. Благо, афиша мероприятий Петербурга пестрит разными событиями. Так что, куда сходить в Санкт-Петербурге, найдет каждый.
     </div>
 
-    <div class="end">
-        <table class="end">
-            <tr>
-                <td>
-                    <img src="~/img/Group 4.png" class="end">
-                </td>
-                <td>
-                    <div> О проекте </div><br class="end">
-                    <div class="end1"> О Оферта </div>
-                </td>
-                <td class="end">
-                    <div> Контакты </div><br>
-                    <div class="end1"> <div class="castil">1</div></div>
-
-                </td>
-            </tr>
-
-        </table>
+    <div class="footer213">
+        <div class="end33">
+            <img src="~/img/Group 4.png">
+        </div>
+        
+            <div class="end11">
+                <div>
+                    О проекте
+                </div>
+                <div>
+                    Оферта
+                </div>
+            </div>
+            <div class="end22">
+                Контакты
+            </div>
+       
     </div>
     <div class="endback">
     </div>
@@ -75,6 +74,33 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <style type="text/css">
+        .footer213 {
+            display: flex;
+            height: 140px;
+            font-size: 30px;
+            background: #CBCBCB;
+        }
+
+        .end11 {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+
+        .end22 {
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .end33 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .end4 {
+            display: flex;
+        }
         .mid {
             height: 1000px;
         }
@@ -97,42 +123,8 @@
             background: #CBCBCB;
         }
 
-        table.end {
-            width: 70%;
-            margin: auto;
-            padding-top: 0px;
-        }
-
-        td.end {
-            width: 350px;
-        }
-
-        div.end1 {
-            margin-top: -50px;
-        }
-
-        .castil {
-            color: #CBCBCB;
-        }
-
-        br.end {
-            height: 0px;
-        }
-
-        .end {
-            background: #CBCBCB;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 48px;
-            background: #CBCBCB;
-            color: #000000;
-        }
-
-        img.end {
-            height: 124px;
-            width: 387px;
-        }
+       
+   
 
         .endtext {
             width: 90%;
@@ -243,10 +235,13 @@
             padding-left: 15px;
             margin-top: auto;
             margin-bottom: auto;
-            margin-right: 200px;
-            margin-left: 40px;
+            margin-right: auto;
+            margin-left: auto;
+            white-space: nowrap;
+           
+            text-align: center;
         }
-
+        
         .menu3 li {
             padding-right: 15px;
             padding-left: 15px;
@@ -288,11 +283,11 @@
         }
 
         .menu-main1 {
-            max-width: 100%;
+            text-align: center;
         }
 
         .menu1 {
-            width: 80%;
+          
             font-family: Roboto;
             font-style: normal;
             font-weight: normal;
@@ -302,6 +297,9 @@
             margin-right: auto;
             margin-left: auto;
             text-align: center;
+            margin-top:10px;
+            margin-bottom:10px;
+            
         }
 
         .body {
@@ -340,11 +338,20 @@
         }
 
         ul.menu-main1 {
+            width:100%;
+            
             display: flex;
             list-style: none; /*убираем маркеры списка*/
             margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
             padding-left: 0; /*убираем левый отступ, равный 40px*/
         }
+        @@media screen and (max-width:1800px) {
+            ul.menu-main1 {
+               display:block;
+
+            }
+        }
+      
 
         a {
             display: block;

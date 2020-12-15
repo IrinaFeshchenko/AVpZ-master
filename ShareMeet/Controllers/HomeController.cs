@@ -14,7 +14,7 @@ namespace ShareMeet.Controllers
         private readonly ILogger<HomeController> _logger;
         private UsersContext db;
 
-        public HomeController(ILogger<HomeController> logger,UsersContext context)
+        public HomeController(ILogger<HomeController> logger, UsersContext context)
         {
             _logger = logger;
             db = context;
