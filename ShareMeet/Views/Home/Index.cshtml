@@ -656,7 +656,9 @@
             <section class="team-page-section">
                 <div class="container">
 
-                    <div class="row clearfix">
+                    <div class="row clearfix"> 
+                        @if (ViewBag.data != null)
+                        {
                         @foreach (var item in ViewBag.data)
                         {
                             <div class="team-block col-lg-4 col-md-6 col-sm-12">
@@ -675,6 +677,10 @@
                                     </div>
                                 </div>
                             </div>
+                        }
+                        }else
+                        {
+                            <p>ENTERTERROR</p>
                         }
                     </div>
                 </div>
