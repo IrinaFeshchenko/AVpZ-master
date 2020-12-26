@@ -79,7 +79,8 @@
         padding: 10px 5%;
         box-sizing: border-box;
         opacity: 0.8;
-        transition: all 0.4s
+        transition: all 0.4s;
+        color:black;
     }
 
     .card:hover .data {
@@ -484,23 +485,34 @@
         position: relative;
         margin-bottom: 0px;
     }
+
 </style>
 
 
 
 
-
+<div class="fix">
+    <div class="menu2">
+        <ul class="menu-main2">
+            <li><a href="" class="current">Концерты</a></li>
+            <li><a href=""></a>Спектакли</li>
+            <li><a href="">Выставки</a></li>
+            <li><a href="">Собрания</a></li>
+            <li><a href="">Праздник</a></li>
+            <li><a href="">Еще</a></li>
+        </ul>
+    </div>
+</div>
 
 @foreach (var item1 in ViewBag.data)
 {
-    <div class="midbackground">
-        <div class="container">
-            <div class="main-body">
-                <div class="row gutters-sm">
-                    <div class="col-md-4 mb-3">
-                        <div class="wrapper">
+<div class="midbackground">
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="wrapper">
                         <div class="card" style="width: 350px">
-">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     <h6 class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
@@ -524,104 +536,107 @@
                                 </li>
                             </ul>
                         </div>
-                        </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card mb-3" style="width:780px">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="card-titl">Full Name</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @item1.FirstName @item1.Name @item1.LastName
-                                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3" style="width:780px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="card-titl">Full Name</h6>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="card-titl">Email</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @item1.Email
-                                    </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @item1.FirstName @item1.Name @item1.LastName
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="card-titl">Gender</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @item1.Gender
-                                    </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="card-titl">Email</h6>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="card-titl">Birth</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @item1.Birth
-                                    </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @item1.Email
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="card-titl">Address</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        Bay Area, San Francisco, CA
-                                    </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="card-titl">Gender</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @item1.Gender
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="card-titl">Birth</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @item1.Birth
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="card-titl">Address</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    Bay Area, San Francisco, CA
                                 </div>
                             </div>
                         </div>
-                        <a class="Name" asp-controller="Profile" asp-action="New_Comp">Добавить компанию</a>
-                        <div class="row gutters-sm">
-                            @foreach (var comp1 in ViewBag.company)
-                            {
+                    </div>
+                    <a class="Name" asp-controller="Profile" asp-action="New_Comp">Добавить компанию</a>
+                    <div class="row gutters-sm">
+                        @foreach (var comp1 in ViewBag.company)
+                        {
 
-                                <div class="col-sm-6 mb-3">
-                                    <div class="card h-100" style="width:400px">
-                                        <div class="card-body">
-                                            <a class="Name" asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp1.Id_company">Удалить компанию</a>
-                                            <a class="Name" asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp1.Id_company">Редактировать компанию</a>
-                                            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                                            <h5>@comp1.Id_company</h5>
-                                            <h5>@comp1.Name</h5>
-                                            <h5>@comp1.Description</h5>
-                                        </div>
-                                        <div>
-                                            <a class="Name" asp-area="" asp-controller="Profile" asp-action="New_MeetUp" asp-route-id="@comp1.Id_company">Добавить meting</a>
-                                            @foreach (var meetings1 in ViewBag.meetings)
+                            <div class="col-sm-6 mb-3">
+                                <div class="card h-100" style="width:400px">
+                                    <div class="card-body">
+                                        <a class="Name" asp-area="" asp-controller="Profile" asp-action="DeleteCompany" asp-route-company_id="@comp1.Id_company">Удалить компанию</a>
+                                        <a class="Name" asp-area="" asp-controller="Profile" asp-action="Edit_my_company" asp-route-id="@comp1.Id_company">Редактировать компанию</a>
+                                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                                        <h5>@comp1.Id_company</h5>
+                                        <h5>@comp1.Name</h5>
+                                        <h5>@comp1.Description</h5>
+                                    </div>
+                                    <div>
+                                        <a class="Name" asp-area="" asp-controller="Profile" asp-action="New_MeetUp" asp-route-id="@comp1.Id_company">Добавить meting</a>
+                                        @foreach (var meetings1 in ViewBag.meetings)
+                                        {
+                                            if (meetings1.companyId_company == comp1.Id_company)
                                             {
-                                                if (meetings1.companyId_company == comp1.Id_company)
-                                                {
-                                                    <section id="team">
-                                                        <div class="card" style="background-image:linear-gradient(45deg, #48a219 0%, #1421ff 100%);height:400px;width:379px">
-                                                            <div class="data">
-                                                                <h2>@meetings1.Id_meetup</h2>
-                                                                <i>@meetings1.Name</i>
-                                                                <p>@meetings1.Type</p>
-                                                                <p>@meetings1.companyId_company</p>
-                                                                <p>@meetings1.StartofSelection</p>
-                                                                <p>@meetings1.FinishofSelection</p>
-                                                                <p>@meetings1.Adress</p>
-                                                                <p>@meetings1.Cost</p>
-                                                            </div>
+                                                <section id="team">
+                                                    <div class="card" style="background-image:linear-gradient(45deg, #48a219 0%, #1421ff 100%);height:400px;width:379px">
+                                                        <div class="data">
+                                                            <h2>@meetings1.Id_meetup</h2>
+                                                            <i>@meetings1.Name</i>
+                                                            <p>@meetings1.Type</p>
+                                                            <p>@meetings1.companyId_company</p>
+                                                            <p>@meetings1.StartofSelection</p>
+                                                            <p>@meetings1.FinishofSelection</p>
+                                                            <p>@meetings1.Adress</p>
+                                                            <p>@meetings1.Cost</p>
                                                         </div>
-                                                    </section>
-                                                    <a class="Name" asp-area="" asp-controller="Profile" asp-action="Delete" asp-route-id="@meetings1.Id_meetup" asp-route-company_id="@comp1.Id_company">Удалить meting</a>
-                                                    <a class="Name" asp-area="" asp-controller="Profile" asp-action="Edit_my_meetup" asp-route-id="@meetings1.Id_meetup">Редактировать meting</a>
-                                                }
+                                                    </div>
+                                                </section>
+                                                <a class="Name" asp-area="" asp-controller="Profile" asp-action="Delete" asp-route-id="@meetings1.Id_meetup" asp-route-company_id="@comp1.Id_company">Удалить meting</a>
+                                                <a class="Name" asp-area="" asp-controller="Profile" asp-action="Edit_my_meetup" asp-route-id="@meetings1.Id_meetup">Редактировать meting</a>
                                             }
-                                        </div>
+                                        }
                                     </div>
                                 </div>
-                            }
-                        </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div style="height:25px">
+
+    </div>
+</div>
 }
