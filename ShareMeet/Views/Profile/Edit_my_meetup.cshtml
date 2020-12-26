@@ -214,11 +214,9 @@
 </style>
 
 <form class="ui-form" asp-action="Edit_my_meetup" asp-controller="Profile" asp-route-id="@Model.Id_meetup" enctype="multipart/form-data" method="post" class="ui-form">
-    <div class="form-left-decoration"></div>
-    <div class="form-right-decoration"></div>
     <div class="circle"></div>
     <div class="form-inner">
-        <h3>Редагувати моє оголошення</h3>
+        <h3>Редагувати моє</h3>
         <div class="form-group" style="visibility:hidden; clip: rect(0, 0, 0, 0);
   position: absolute;">
             <label asp-for="Id_meetup" class="control-label">Id</label>
@@ -239,10 +237,10 @@
             <input type="text" asp-for="Type" class="form-control" /><label asp-for="Type" class="control-label">Процент изучениея</label>
         </div>
         <div class="form-row">
-            <input type="datetime" asp-for="StartofSelection" class="form-control" /><label asp-for="StartofSelection" class="control-label">Процент изучениея</label>
+            <input type="date" asp-for="StartofSelection" class="form-control" /><label asp-for="StartofSelection" class="control-label">Процент изучениея</label>
         </div>
         <div class="form-row">
-            <input type="datetime" asp-for="FinishofSelection" class="form-control" /><label asp-for="FinishofSelection" class="control-label">Процент изучениея</label>
+            <input type="date" asp-for="FinishofSelection" class="form-control" /><label asp-for="FinishofSelection" class="control-label">Процент изучениея</label>
         </div>
 
         <p></p>
@@ -258,7 +256,7 @@
         </div>
         <div class="form-group">
             <label asp-for="lat" class="control-label">Id_user</label>
-            <input type="text" asp-for="lat" id='lat' class="form-control" />
+            <input type="text" asp-for="lat" id='lng' class="form-control" />
         </div>
         <div class="form-row">
             <input type="text" asp-for="Adress" class="form-control" /><label asp-for="Adress" class="control-label">Описание</label>
@@ -325,7 +323,7 @@
             marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
 
             // add listener to redraw the polyline when markers position change
-            marker.addListener('position_changed', function (e) {
+            marker.addListener('position_changed', function () {
                 //drawPolyline();
             });
 

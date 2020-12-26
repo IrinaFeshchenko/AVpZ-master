@@ -15,7 +15,6 @@ namespace ShareMeet.Models
         public UsersContext(DbContextOptions<UsersContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
         }
 
     }
