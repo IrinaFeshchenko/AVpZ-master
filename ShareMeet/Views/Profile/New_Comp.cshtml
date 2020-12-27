@@ -265,49 +265,49 @@
   position: relative;
   margin-bottom: 40px;
 }
-.form-row input {
-  display: block;
-  width: 100%;
-  padding: 0 10px;
-  line-height: 40px;
-  font-family: 'Roboto', sans-serif;
-  background: none;
-  border-width: 0;
-  border-bottom: 2px solid #4a90e2;
-  transition: all 0.2s ease;
-}
+        .form-row input {
+            display: block;
+            width: 100%;
+            padding: 0 10px;
+            line-height: 40px;
+            font-family: 'Roboto', sans-serif;
+            background: none;
+            border-width: 0;
+            border-bottom: 2px solid #bf2011;
+            transition: all 0.2s ease;
+        }
 .form-row label {
   position: absolute;
   left: 13px;
-  color: #9d959d;
+  color: #bf2011;
   font-size: 20px;
   font-weight: 300;
   transform: translateY(-35px);
   transition: all 0.2s ease;
 }
-.form-row input:focus {
-  outline: 0;
-  border-color: #F77A52;
-}
-.form-row input:focus + label, 
-.form-row input:valid + label {
-  transform: translateY(-60px);
-  margin-left: -14px;
-  font-size: 14px;
-  font-weight: 400;
-  outline: 0;
-  border-color: #F77A52;
-  color: #F77A52;
-}
-.ui-form input[type="submit"] {
-  width: 100%;
-  padding: 0;
-  line-height: 42px;
-  background: #4a90e2;
-  border-width: 0;
-  color: white;
-  font-size: 20px;
-}
+        .form-row input:focus {
+            outline: 0;
+            border-color: #bf2011;
+        }
+            .form-row input:focus + label,
+            .form-row input:valid + label {
+                transform: translateY(-60px);
+                margin-left: -14px;
+                font-size: 14px;
+                font-weight: 400;
+                outline: 0;
+                border-color: #bf2011;
+                color: #F77A52;
+            }
+        .ui-form input[type="submit"] {
+            width: 100%;
+            padding: 0;
+            line-height: 42px;
+            background: #bf2011;
+            border-width: 0;
+            color: white;
+            font-size: 20px;
+        }
 .ui-form p {
   margin: 0;
   padding-top: 10px;
@@ -319,18 +319,18 @@
             <div class="form-inner">
                 <div class="validation" asp-validation-summary="ModelOnly" />
                 <div>
-                    <h3>Додати оголошення</h3>
+                    <h3 style="color:#bf2011">Добавить компанию</h3>
                     <div class="form-row">
-                        <input type="text" asp-for="Name" class="form-row" required autocomplete="off" /><label asp-for="Name" class="control-label">Заголовок</label>
+                        <input type="text" asp-for="Name" class="form-row" required autocomplete="off" /><label asp-for="Name" class="control-label">Название компании</label>
                         <span asp-validation-for="Name" />
                     </div>
                     <div class="form-row">
-                        <input type="text" asp-for="Description" class="form-row" required autocomplete="off" /><label asp-for="Description" class="control-label">Опис</label>
+                        <input type="text" asp-for="Description" class="form-row" required autocomplete="off" /><label asp-for="Description" class="control-label">Описание компании</label>
                         <span asp-validation-for="Description" />
                     </div>
                     <div>
                         <div id="add">
-                            <input type="submit" value="Опублікувати" />
+                            <input type="submit" value="Добавить" />
                         </div>
                     </div>
                 </div>

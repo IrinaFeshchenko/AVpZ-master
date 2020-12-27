@@ -10,6 +10,7 @@
         box-sizing: border-box;
     }
 
+
     .decor {
         position: relative;
         max-width: 400px;
@@ -119,152 +120,258 @@
     .div_space {
         margin-bottom: 10px;
     }
+
+    .ui-form {
+        max-width: 1350px;
+        padding: 80px 30px 30px;
+        margin: 50px auto 30px;
+        background: #f3f5d3;
+    }
+
+        .ui-form h3 {
+            position: relative;
+            z-index: 5;
+            margin: 0 0 60px;
+            text-align: center;
+            color: #4a90e2;
+            font-size: 30px;
+            font-weight: normal;
+        }
+
+            .ui-form h3:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 60px;
+                top: -30px;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background: #fee8e4;
+            }
+
+            .ui-form h3:after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                right: 50px;
+                top: -40px;
+                width: 0;
+                height: 0;
+                border-left: 55px solid transparent;
+                border-right: 55px solid transparent;
+                border-bottom: 90px solid #ffe3b5;
+            }
+
+    .form-row {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+        .form-row input {
+            display: block;
+            width: 100%;
+            padding: 0 10px;
+            line-height: 40px;
+            font-family: 'Roboto', sans-serif;
+            background: none;
+            border-width: 0;
+            border-bottom: 2px solid #bf2011;
+            transition: all 0.2s ease;
+        }
+
+        .form-row label {
+            position: absolute;
+            left: 13px;
+            color: #bf2011;
+            font-size: 20px;
+            font-weight: 300;
+            transform: translateY(-35px);
+            transition: all 0.2s ease;
+        }
+
+        .form-row input:focus {
+            outline: 0;
+            border-color: #bf2011;
+        }
+
+            .form-row input:focus + label,
+            .form-row input:valid + label {
+                transform: translateY(-60px);
+                margin-left: -14px;
+                font-size: 14px;
+                font-weight: 400;
+                outline: 0;
+                border-color: #bf2011;
+                color: #F77A52;
+            }
+
+    .ui-form input[type="submit"] {
+        width: 100%;
+        padding: 0;
+        line-height: 42px;
+        background: #bf2011;
+        border-width: 0;
+        color: white;
+        font-size: 20px;
+    }
+
+    .ui-form p {
+        margin: 0;
+        padding-top: 10px;
 </style>
 
+<div class="midbackground" style="background-color:#f3f5d3;padding-bottom: 15px;">
+    <div style="height:25px;"></div>
+    <form id="add_ad" class="ui-form" asp-action="New_MeetUp" asp-controller="Profile" method="post" enctype="multipart/form-data">
+        
+        <div class="form-inner">
+            <div class="validation" asp-validation-summary="ModelOnly" />
+            <div>
+                <h3 style="color:#bf2011">Добавить митинг</h3>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Название</label>
+                    <input type="text" asp-for="Name" class="form-control" required autocomplete="off" />
+                    <span asp-validation-for="Name" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type" class="control-label">Тип</label>
+                    <input type="text" asp-for="Type" class="form-control" required autocomplete="off" />
+                    <span asp-validation-for="Type" />
+                </div>
+                <div class="form-group" style="visibility:hidden; clip: rect(0, 0, 0, 0); position: absolute;">
+                    <label asp-for="companyId_company" class="control-label">Заголовок</label>
+                    <input type="text" id='result' asp-for="companyId_company" class="form-control" required autocomplete="off" />
+                    <span asp-validation-for="companyId_company" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Описание митинга</label>
+                    <input type="text" asp-for="Description" class="form-control" required autocomplete="off" />
+                    <span asp-validation-for="Description" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartofSelection">Дата начала митинга</label><br />
+                    <input asp-for="StartofSelection" />
+                    <span asp-validation-for="StartofSelection" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="FinishofSelection">Дата конца митинга</label><br />
+                    <input asp-for="FinishofSelection" />
+                    <span asp-validation-for="FinishofSelection" />
+                </div>
+            </div>
 
-<form id="add_ad" class="decor" asp-action="New_MeetUp" asp-controller="Profile" method="post" enctype="multipart/form-data">
-    <div class="form-left-decoration"></div>
-    <div class="form-right-decoration"></div>
-    <div class="circle"></div>
-    <div class="form-inner">
-        <div class="validation" asp-validation-summary="ModelOnly" />
-        <div>
-            <h3>Додати оголошення</h3>
-            <div class="form-row">
-                <input type="text" asp-for="Name" class="form-control" required autocomplete="off" /><label asp-for="Name" class="control-label">Заголовок</label>
-                <span asp-validation-for="Name" />
+            <div id="canvas" style="height: 900px; width:900px;margin:auto"></div>
+            <div id="controls">
+                <input style="background-color:#bf2011" type="button" value="Remove all Markers" onClick="removeMarkers()" />
             </div>
-            <div class="form-row">
-                <input type="text" asp-for="Type" class="form-control" required autocomplete="off" /><label asp-for="Type" class="control-label">Заголовок</label>
-                <span asp-validation-for="Type" />
+            <div class="form-group" style="visibility:hidden; clip: rect(0, 0, 0, 0); position: absolute;">
+                <label asp-for="lng" class="control-label">Заголовок</label>
+                <input type="text" asp-for="lng" class="form-control" required autocomplete="off" id='lat' />
+                <span asp-validation-for="lng" />
             </div>
-            <div class="form-row" style="visibility:hidden; clip: rect(0, 0, 0, 0); position: absolute;">
-                <input type="text" id='result' asp-for="companyId_company" class="form-control" required autocomplete="off" /><label asp-for="companyId_company" class="control-label">Заголовок</label>
-                <span asp-validation-for="companyId_company" />
-            </div>
-            <div class="form-row">
-                <input type="text" asp-for="Description" class="form-control" required autocomplete="off" /><label asp-for="Description" class="control-label">Опис</label>
-                <span asp-validation-for="Description" />
+            <div class="form-group" style="visibility:hidden; clip: rect(0, 0, 0, 0); position: absolute;">
+                <label asp-for="lat" class="control-label">Заголовок</label>
+                <input type="text" asp-for="lat" class="form-control" required autocomplete="off" id='lng' />
+                <span asp-validation-for="lat" />
             </div>
             <div class="form-group">
-                <label asp-for="StartofSelection">Дата Рождения</label><br />
-                <input asp-for="StartofSelection" />
-                <span asp-validation-for="StartofSelection" />
+                <label asp-for="Adress" class="control-label">Адрес проведения</label>
+                <input type="text" asp-for="Adress" class="form-control" required autocomplete="off" />
+                <span asp-validation-for="Adress" />
             </div>
             <div class="form-group">
-                <label asp-for="FinishofSelection">Дата Рождения</label><br />
-                <input asp-for="FinishofSelection" />
-                <span asp-validation-for="FinishofSelection" />
+                <label asp-for="Cost" class="control-label">Цена</label>
+                <input type="text" asp-for="Cost" class="form-control" required autocomplete="off" />
+                <span asp-validation-for="Cost" />
+            </div>
+            <div>
+                <div class="form-group">
+                    <input type="submit" value="Опублікувати" />
+                </div>
             </div>
         </div>
-
-        <div id="canvas" style="height: 900px; width:900px;margin:auto"></div>
-        <div id="controls">
-            <input type="button" value="Remove all Markers" onClick="removeMarkers()" />
-        </div>
-        <div class="form-row">
-            <input type="text" asp-for="lng" class="form-control" required autocomplete="off" id='lat' /><label asp-for="lng" class="control-label">Заголовок</label>
-            <span asp-validation-for="lng" />
-        </div>
-        <div class="form-row">
-            <input type="text" asp-for="lat" class="form-control" required autocomplete="off" id='lng' /><label asp-for="lat" class="control-label">Заголовок</label>
-            <span asp-validation-for="lat" />
-        </div>
-        <div class="form-row">
-            <input type="text" asp-for="Adress" class="form-control" required autocomplete="off" /><label asp-for="Adress" class="control-label">Заголовок</label>
-            <span asp-validation-for="Adress" />
-        </div>
-        <div class="form-row">
-            <input type="text" asp-for="Cost" class="form-control" required autocomplete="off" /><label asp-for="Cost" class="control-label">Заголовок</label>
-            <span asp-validation-for="Cost" />
-        </div>
-        <div>
-            <div id="add">
-                <input type="submit" value="Опублікувати" />
-            </div>
-        </div>
-    </div>
-</form>
-@section scripts {
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&callback=initialize"></script>
-    <script>
-        let map;
-        let markersArray = [];
-        let polyline = null;
-        let lat;
-        let lng;
-        $(document).ready(function () {
-            initMap();
-        });
-
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('canvas'), {
-                center: { lat: 55.752622, lng: 37.617567 },
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-            });
-            // map onclick listener
-            map.addListener('click', function (e) {
-                addMarker(e.latLng);
-                lat = e.latLng.lat();
-                lng = e.latLng.lng();
-                alert(e.latLng);
-                document.getElementById("lat").value = lat;
-                document.getElementById("lng").value = lng;
-                lat = document.getElementById('lat').value.replace(".", ","),
-                lng = document.getElementById('lng').value.replace(".", ",");
-                document.getElementById("lat").value = lat;
-                document.getElementById("lng").value = lng;
-                //drawPolyline();
-            });
-        }
-        // define function to add marker at given lat & lng
-        function addMarker(latLng) {
-            let marker = new google.maps.Marker({
-                map: map,
-                position: latLng,
-                draggable: true
-            });
-            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-
-            // add listener to redraw the polyline when markers position change
-            marker.addListener('position_changed', function () {
-                //drawPolyline();
+    </form>
+</div>
+    @section scripts {
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&callback=initialize"></script>
+        <script>
+            let map;
+            let markersArray = [];
+            let polyline = null;
+            let lat;
+            let lng;
+            $(document).ready(function () {
+                initMap();
             });
 
-            //store the marker object drawn in global array
-            markersArray.push(marker);
-        }
-        function removeMarkers() {
-            for (i = 0; i < markersArray.length; i++) {
-                markersArray[i].setMap(null);
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('canvas'), {
+                    center: { lat: 55.752622, lng: 37.617567 },
+                    zoom: 15,
+                    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                });
+                // map onclick listener
+                map.addListener('click', function (e) {
+                    addMarker(e.latLng);
+                    lat = e.latLng.lat();
+                    lng = e.latLng.lng();
+                    document.getElementById("lat").value = lat;
+                    document.getElementById("lng").value = lng;
+                    lat = document.getElementById('lat').value.replace(".", ","),
+                        lng = document.getElementById('lng').value.replace(".", ",");
+                    document.getElementById("lat").value = lat;
+                    document.getElementById("lng").value = lng;
+                    //drawPolyline();
+                });
             }
-        }
+            // define function to add marker at given lat & lng
+            function addMarker(latLng) {
+                let marker = new google.maps.Marker({
+                    map: map,
+                    position: latLng,
+                    draggable: true
+                });
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
 
-        // define function to draw polyline that connect markers' position
-        function drawPolyline() {
-            let markersPositionArray = [];
-            // obtain latlng of all markers on map
-            markersArray.forEach(function (e) {
-                markersPositionArray.push(e.getPosition());
-            });
+                // add listener to redraw the polyline when markers position change
+                marker.addListener('position_changed', function () {
+                    //drawPolyline();
+                });
 
-            // check if there is already polyline drawn on map
-            // remove the polyline from map before we draw new one
-            if (polyline !== null) {
-                polyline.setMap(null);
+                //store the marker object drawn in global array
+                markersArray.push(marker);
+            }
+            function removeMarkers() {
+                for (i = 0; i < markersArray.length; i++) {
+                    markersArray[i].setMap(null);
+                }
             }
 
-            // draw new polyline at markers' position
-            polyline = new google.maps.Polyline({
-                map: map,
-                path: markersPositionArray,
-                strokeOpacity: 0.4
-            });
-        }
-    </script>
-    <script>
+            // define function to draw polyline that connect markers' position
+            function drawPolyline() {
+                let markersPositionArray = [];
+                // obtain latlng of all markers on map
+                markersArray.forEach(function (e) {
+                    markersPositionArray.push(e.getPosition());
+                });
+
+                // check if there is already polyline drawn on map
+                // remove the polyline from map before we draw new one
+                if (polyline !== null) {
+                    polyline.setMap(null);
+                }
+
+                // draw new polyline at markers' position
+                polyline = new google.maps.Polyline({
+                    map: map,
+                    path: markersPositionArray,
+                    strokeOpacity: 0.4
+                });
+            }
+        </script>
+        <script>
     document.getElementById("result").value = @ViewBag.companyId;
-    </script>
-}
+        </script>
+    }

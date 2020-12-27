@@ -14,7 +14,7 @@
         @if (!User.Identity.IsAuthenticated)
         {
             <ul class="menu-main1">
-                <li><a href="" class="current"><img src="~/img/Group 4.png"></a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" class="current"><img src="~/img/Group 4.png"></a></li>
                 <li><a href="">Поиск</a></li>
                 <li><a href="">Найти событие</a></li>
                 <li><a href="">Разместить событие</a></li>
@@ -26,7 +26,7 @@
         else
         {
             <ul class="menu-main1">
-                <li><a href="" class="current"><img src="~/img/Group 4.png"></a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index"class="current"><img src="~/img/Group 4.png"></a></li>
                 <li><a href="">Поиск</a></li>
                 <li><a href="">Найти событие</a></li>
                 <li><a href="">Разместить событие</a></li>
